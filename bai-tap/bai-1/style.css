@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center; /* căn giữa ngang */
+    align-items: center;     /* căn giữa dọc */
+    height: 100vh;
+    background: rgb(245, 239, 228);
+}
+
+.container{
+    text-align: center;
+    width: 500px;
+    height: auto;
+    margin: auto;
+    padding: 20px;
+    border: 3px;
+    background: wheat;
+    gap: 30px;
+}
+
+.operator-number{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 20px;
+    gap: 20px;
+}
+
+.operator-number input{
+    width: 120px;
+    padding: 3px;
+}
+
+.operator-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px;
+    margin: 10px;
+    padding: 20px;
+    gap: 20px;
+}
+
+.operator-button button{
+    width: 40px;
+    height: 40px;
+}
