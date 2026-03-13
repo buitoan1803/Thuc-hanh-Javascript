@@ -124,8 +124,46 @@
 
 // console.log(numbers.length);
 
-let arr = [10,20,30,40];
+// let arr = [10,20,30,40];
 
-for(let i = 0; i < arr.length; i++){
-   console.log(arr[i]);
+// for(let i = 0; i < arr.length; i++){
+//    console.log(arr[i]);
+// }
+
+// let day = 1;
+
+// switch(day){
+//     case 1:
+//         console.log("Monday");
+//         break;    case 2:
+//         console.log("Tuesday");
+//         break;    case 3:
+//         console.log("Wednesday");
+//         break;    default:
+//         console.log("Unknown day");
+// }
+
+let a = 5;
+let b = 3;
+let op = prompt("Nhập toán tử:");
+
+switch(op){
+    case "+":
+        console.log(a + b);
+        break;
+
+    case "-":
+        console.log(a - b);
+        break;
+
+    case "*":
+        console.log(a * b);
+        break;
+
+    case "/":
+        console.log(a / b);
+        break;
+
+    default:
+        console.log("Phép tính không hợp lệ");
 }
