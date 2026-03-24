@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center; /* căn ngang */
+    font-family: 'Times New Roman', Times, serif;
+    background: wheat;
+}
+
+.container{
+    width: auto;
+    color: rgb(255, 255, 255);
+    background: gray;
+    width: 500px;
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+    gap: 20px;
+}
+
+.btn{
+    width: 60px;
+    height: auto;
+    padding: 3px;
+    margin: 5px;
+    background: gainsboro;
+}
+
+.list{
+    list-style: none;
+    padding: 20px;
+    margin: 10px;
+}
+.list li{
+    padding: 5px;
+    
+}
