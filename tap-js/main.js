@@ -143,27 +143,108 @@
 //         console.log("Unknown day");
 // }
 
-let a = 5;
-let b = 3;
-let op = prompt("Nhập toán tử:");
+// let a = 5;
+// let b = 3;
+// let op = prompt("Nhập toán tử:");
 
-switch(op){
-    case "+":
-        console.log(a + b);
-        break;
+// switch(op){
+//     case "+":
+//         console.log(a + b);
+//         break;
 
-    case "-":
-        console.log(a - b);
-        break;
+//     case "-":
+//         console.log(a - b);
+//         break;
 
-    case "*":
-        console.log(a * b);
-        break;
+//     case "*":
+//         console.log(a * b);
+//         break;
 
-    case "/":
-        console.log(a / b);
-        break;
+//     case "/":
+//         console.log(a / b);
+//         break;
 
-    default:
-        console.log("Phép tính không hợp lệ");
-}
+//     default:
+//         console.log("Phép tính không hợp lệ");
+// }
+
+// let arr = [10, 20, 30]; 
+// for (let item of arr) { 
+//     console.log(item); 
+// }
+
+// let name = "Bùi Toan";
+// console.log(name.replace("Bùi", "Bui"));
+// console.log(name.replace("Bùi", "BUI"));
+
+// let arr = [3, 7, 2, 9, 5]; 
+// let sum = 0;
+// let count = 0;
+// for(let item of arr){
+//     sum +=item;
+// }
+// console.log(sum);
+// for (let item of arr) { if (item >= 5) { count++; } }
+// console.log(count);
+// arr.push(4); // [1,2,3]
+// arr.pop();
+// arr.unshift(0, 1);
+// console.log(arr);
+// console.log(arr.length);
+
+
+
+
+// const products = [
+//  {id: 1, name: 'Laptop', price: 1000, quantity: 3},
+//  {id: 2, name: 'Mouse', price: 200, quantity: 3},
+//  {id: 3, name: 'Keyboard', price: 250, quantity: 5},
+//  {id: 4, name: 'Monitor', price: 300, quantity: 3},
+//  {id: 5, name: 'USB', price: 100, quantity: 3},
+// ];
+
+// products[0].price = 900
+// delete products[0].quantity;
+// console.log(products[0]);
+
+
+// let user = { name: "Toan", address: { city: "Ha Noi", district: "Hoan Kiem" } };
+// console.log(user);
+
+// let a = {name: "Toan"}; let b = a;
+
+// b.name = "An";
+
+// console.log(a.name); // "An"
+
+// let a = {x:1}; let b = {x:1};
+
+// console.log(a === b); // false
+// let a = {name: "Toan"}
+// let b = a;
+// console.log(b);
+
+// btn.addEventListener("click", function() {
+//   console.log("Clicked");
+  
+// });
+
+// const input = document.querySelector("#name");
+// input.value;
+
+// const div = document.createElement("div");
+// div.innerText = "Hello";
+
+// document.body.appendChild(div);
+
+// const h1 = document.createElement("h1");
+// h1.innerText = "Bùi Toàn";
+// document.body.appendChild(h1);
+
+// const greet = (name) => {
+//   console.log("Hello" + name);
+// };
+
+
+let item = [1, 2, 3];
+let newArr = item.map(item => item * 2);
