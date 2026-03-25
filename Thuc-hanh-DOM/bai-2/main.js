@@ -2,19 +2,16 @@ let input = document.querySelector("#input");
 let btn = document.querySelector("#btn");
 let list = document.querySelector("#list");
 
+let todos = [];
+
 btn.addEventListener("click", function(){
-    let value = input.value.trim();
-    if(value === "") return;
-    list.innerHTML += `<li>${value}</li>`;
-    input.value = "";
+    let value = input.value;
+    todos.push(value);
+    render();
+});
 
-})
-
-list.addEventListener("click", function(e){
-    
-    if(e.target.tagName === "LI"){
-        if(confirm("Xóa item này?")){
-        e.target.remove();
-    }
-    }
-})
+function render(){
+    list.innerHTML = todos
+                    .map(item => `<li>${item}</li>`)
+                    .join("");
+}

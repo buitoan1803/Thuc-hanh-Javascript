@@ -1,0 +1,79 @@
+STRING(Hiểu sâu)
+Các method quan trọng phải nhớ:
+1. slice()
+dùng để cắt chuỗi.
+VD: let str = "hello"
+ consolo.log(str.slice(1, 4); // Nó sẽ hiển thị chuỗi từ 1-4 => "ell"
+Có thể hiểu như là sẽ đếm dữ liệu trong string từ 0-5 rồi chọn vùng muốn cắt và in ra.
+
+2. substring()
+Cũng dùng gần giống với slice() nhưng sẽ chỉ lấy tới 0 -> khoảng trước của 4 chứ không lấy 4.
+
+3. trim()
+Xóa khoảng trắng của chuỗi.
+VD: "   hello   ".trim(); // thì khi này trim() sẽ xóa khoảng trắng dư thừa đi và trả lại kết quả là "hello".
+
+4. includes()
+kiểm tra có chứa không.
+VD: "hello".includes("he"); // Kết quả hiển thị sẽ là true / false. Trong ví dụ thì sẽ hiển thị kết quả là true. Tuy nhiên, cần lưu ý: includes() có phân biệt chữ hoa và chữ thường nên nếu không nhập đúng như string khai báo mà kiểm tra thì kết quả vẫn sẽ trả về false.
+
+5. indexOf()
+Dùng để tìm vị trí.
+VD: "hello".replace("l"); // Kết quả trả về sẽ là "2". Vì nó sẽ đếm vị trí trong string đã khai báo, và nếu 2 ký tự giống nhau đứng trong cùng chuỗi thì sẽ hiển thị vị trí đầu tiên của ký tự đó.
+
+6. replace()
+Dùng để thay thế nội dung trong chuỗi string.
+VD: "hello",replace("h", "H"); // kết quả trả về sẽ là "Hello". Khi muốn thay đổi nội dung trong string thì cần đưa ra đoạn cần thay đổi và nôi dung muốn thay đổi cách nhau một dấy ",".
+
+7. split() (cực quan trọng)
+Dùng để biến chuỗi string thành mảng array.
+VD: "a, b, c".split(","); //['a', 'b', 'c']
+
+8. toUpperCase()/toLowerCase()
+toUpperCase dùng để chuyển chuỗi thành chứ in hoa
+toLowerCase dùng để chuổi chuỗi về chữ thường 
+VD: 
+"hello".toUpperCase(); // "HELLO"
+"HELLO".toLowerCase(); // "hello"
+
+
+ARRAY (Trọng tâm: map, filter, find)
+
+1. map() - Biến đổi dữ liệu
+Cách dùng: arr.map(item => ...)
+VD: 
+let arr = [1, 2, 3];
+let result = arr.map(x => x *2);
+console.log(result);
+// [2, 4, 6]
+
+(=) map = giữ nguyên số lượng phần tử
+
+2. filter() - Lọc dữ liệu
+Cách dùng: arr.filter(item => điều kiện)
+VD: 
+let arr[1, 2, 3, 4];
+let result = arr.filter(x => x % 2 === 0);
+console.log(result);
+// [2, 4]
+
+(=) filter = trả về ít hơn hoặc bằng số lượng phần tử.
+
+3. find() - tìm 1 phần tử 
+Cách dùng: arr.find(item => điều kiện)
+VD: 
+let arr = [1, 2, 3, 4];
+let result = arr.find (x => x > 2);
+console.log(result);
+// 3
+
+(=)find = chỉ trả về 1 phần tử đầu tiên.
+
+4. reduce()
+ruduce dùng để gom nhiều giá trị thành 1 giá trị
+Cách dùng: 
+arr.reduce((acc, item) => {return acc + item;}, 0)
+Giải thích:
+acc -> biến tích lũy (tổng)
+item -> phần tử hiện tại
+0 -> giá trị ban đầu

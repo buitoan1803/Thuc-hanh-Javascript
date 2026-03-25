@@ -246,5 +246,11 @@
 // };
 
 
-let item = [1, 2, 3];
-let newArr = item.map(item => item * 2);
+// let item = [1, 2, 3];
+// let newArr = item.map(item => item * 2);
+
+
+let str = "hello";
+let arr = "a,b,c";
+console.log(arr.split(","))
+console.log(str.indexOf());
