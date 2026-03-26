@@ -36,7 +36,21 @@ VD:
 "hello".toUpperCase(); // "HELLO"
 "HELLO".toLowerCase(); // "hello"
 
+9. localeCompare()
+- Dùng để so sánh chuỗi string 
+- Cú pháp: a.localeCompare(b)
+* QUY TẮC: 
++ Nếu < 0 thì a đứng trước b
++ Nếu > 0 thì b đứng trước a
++ Nếu = 0 thì giống nhau
 
+(+) Dùng trong sort():
+arr.sort((a, b) => a.name.localeCompare(b.name));
+=> Sắp xếp từ A -> Z
+
+arr.sort((a, b) => b.name.localeCompare(a.name));
+=> Đảo ngược lại xếp từ Z -> A
+-------------------------------------------------------------------------
 ARRAY (Trọng tâm: map, filter, find)
 
 1. map() - Biến đổi dữ liệu
@@ -77,3 +91,67 @@ Giải thích:
 acc -> biến tích lũy (tổng)
 item -> phần tử hiện tại
 0 -> giá trị ban đầu
+
+5. splice()
+splice() dùng để: thêm/xóa/thay thế phần tử trong mảng. Và nó thay đổi trực tiếp mảng gốc
+Cú pháp: arr.splice(vị trí, số lượng xóa, phần tử mới)
+
+6. sort() 
+- Dùng để sắp xếp phần tử trong mảng.
+- Cú pháp: arr.sort((a, b) => { // return gì đó });
+- Quy tắc: 
+ + return < 0 -> a đứng trước b
+ + return > 0 -> b đứng trước a
+ + return = 0 -> giữ nguyên
+ * Trong đó a và b là 2 phần tử bất kỳ trong mảng đang được đêm ra so sánh
+- Sắp xếp giảm dần: arr.sort((a, b) => a - b)
+ + a < b -> a âm -> a lên trước
+ + a > b -> a dương -> b lên trước
+- Sắp xếp tăng dần: arr.sort((a, b) => b - a)
+
+
+
+-----------------------------------------------------------------------------------------------------
+LOCAL STORAGE LÀ GÌ?
+- localStorage là bộ nhớ trình duyệt
+- Nó dùng để: 
+ + Lưu dữ liệu
+ + Giữ lại khe reload
+ + Không mất khi tắt tab
+VD: 
+localStorage.setItem("name", "Toan");
+=> Lưu vào brower.
+localStorage.getItem("name");
+=> Lấy ra: // "Toan"
+(+) LƯU Ý QUAN TRỌNG: localStorage chỉ lưu được STRING
+
+JSON.stringify() & JSON.parse()
+
++) stringify():
+JSON>stringify(todos);
+-> biến: ["a", "b"]
+-> Thành: `["a", "b"]`
+
++) parse()
+JSON.parse(data);
+-> Biến ngược lại: `["a", "b"]`
+-> Thành ["a", "b"]
+
+Flow chuẩn của app (đây là cái quan trọng nhất):
+Load -> lấy data -> render -> User action -> update -> save -> render
+
+VAI TRÒ CỦA RENDER()
+- render là cầu nối giữa data -> UI
+- Nó luôn: list.innerHTML = ...
+- Và không chứa logic xử lý data
+*) Tại sao phải gọi render() khi load ?
+- Vì Reload -> thì HTML reset
+- Nhưng: localStorage vẫn còn data
+- Nên phải: Lấy data -> render lại UI
+Cần nhớ kỹ: 
++ localStorage = là nơi lưu data
++ render = là thứ hiển thị data
+=> FLOW: load -> getItem -> parse -> render
+	Click -> update array -> setItem -> render
+
+ 
