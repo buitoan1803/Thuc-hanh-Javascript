@@ -35,10 +35,24 @@ body{
 .list{
     list-style: none;
     padding: 3px;
+    margin: 5px;
 }
 
 .list li{
+    display: flex;
     padding: 2px;
+    margin: 5px;
+    gap: 20px;
+}
+
+.edit{
     margin: 3px;
-    
+    padding: 5px;
+    background: greenyellow;
+}
+
+.delete{
+    margin: 3px;
+    padding: 5px;
+    background: greenyellow;
 }
