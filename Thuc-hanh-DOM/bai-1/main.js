@@ -4,7 +4,7 @@ const btn = document.querySelector("#btn");
 btn.addEventListener("click", function(){
     
     if(texth1.innerText === "Hello"){
-        texth1.innerText = "Xin chào Toàn";
+        texth1.innerText = "Xin chào Toàn"
     }else{
         texth1.innerText = "Hello"
     }

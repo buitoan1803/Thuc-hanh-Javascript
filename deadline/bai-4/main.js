@@ -1,87 +1,53 @@
-let ipName = document.querySelector("#name");
-let ipAge = document.querySelector("#age");
-let btn = document.querySelector("#btn-add");
-let list = document.querySelector("#list");
+// (1) BUTTON CLICK ĐỔI TEXT
+const btn1 = document.querySelector("#btn-click");
+btn1.textContent = "click";
 
-
-let users = JSON.parse(localStorage.getItem("users")) || [
-  { id: 1, name: "A", age: 20 },
-  { id: 2, name: "B", age: 25 }
-];
-render();
-function render() {
-    list.innerHTML = users
-                .map(item => `<li data-id="${item.id}">
-                     <span>${item.name} - ${item.age}</span> 
-                     <button class="edit">Edit</button> 
-                     <button class="delete">x</button></li>`)
-                .join("");
-}
-
-function saveData(){
-    localStorage.setItem("users", JSON.stringify(users));
-}
-
-// Thêm 
-btn.addEventListener("click", function(){
-    let name = ipName.value.trim();
-    let age = ipAge.value.trim();
-
-    if( name === "" || age === "" || isNaN(age)) return;
-   
-    users.push({
-        id: Date.now(),
-        name: name,
-        age: Number(age),
-    });
-
-    ipName.value = "";
-    ipAge.value = "";
-
-    saveData();
-    render();
+btn1.addEventListener("click", function(){
+    if(btn1.textContent === "click"){
+        btn1.textContent="clicked"
+    }else{
+        btn1.textContent = "click"
+    };
+    
 });
 
-list.addEventListener("click", function(e){
+// (2) INPUT - BUTTON - DIV (KHÔNG GHI ĐÈ)
+const input1 = document.querySelector("#ip-content");
+const btn2 = document.querySelector("#btn-add");
+const div = document.querySelector("#list");
 
-    let li = e.target.closest("li");
-    if(!li) return;
+btn2.addEventListener("click", function(){
+    let value = input1.value.trim();
+    if(value === "") return;
 
-    let id = Number(li.dataset.id);
-
-    // tìm index đúng
-    let index = users.findIndex(u => u.id === id);
-
-    // EDIT
-    if(e.target.classList.contains("edit")){
-        li.innerHTML = `
-            <input class="edit-name" value="${users[index].name}">
-            <input class="edit-age" value="${users[index].age}">
-            <button class="save">Save</button>
-        `;
-        return;
-    }
-
-    // SAVE
-    if(e.target.classList.contains("save")){
-        let name = li.querySelector(".edit-name").value.trim();
-        let age = li.querySelector(".edit-age").value.trim();
-
-        if(name !== "" && age !== "" && !isNaN(age)){
-            users[index].name = name;
-            users[index].age = Number(age);
-
-            saveData();
-            render();
-        }
-        return;
-    }
-
-    // DELETE
-    if(e.target.classList.contains("delete")){
-        users.splice(index, 1);
-
-        saveData();
-        render();
-    }
+    let p = document.createElement("p");
+    p.textContent = value;
+    div.appendChild(p);
+    input1.value = "";
 });
+
+// (3) INPUT CHỈ CHO NHẬP SỐ
+const input2 = document.querySelector("#ip-number");
+
+input2.addEventListener("input", function(){
+    let value = input2.value.trim();
+
+    // chỉ giữ lại số, dấu - và .
+    value = value.replace(/[^0-9.-]/g, "");
+
+    // Chỉ cho 1 dấu -
+    if((value.match(/-/g) || []).length > 1){
+        value = value.replace(/-/g, "");
+    }
+    if(value.indexOf("-") > 0){
+        value = value.replace("-", "");
+    }
+
+    // Chỉ cho 1 dấu .
+    if((value.match(/\./g) || []).length > 1){
+        let parts = value.split(".");
+        value = parts.shift() + "." + parts.join("");
+    }
+    input2.value = value;
+});
+

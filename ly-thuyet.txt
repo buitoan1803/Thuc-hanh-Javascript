@@ -154,4 +154,33 @@ Cần nhớ kỹ:
 => FLOW: load -> getItem -> parse -> render
 	Click -> update array -> setItem -> render
 
- 
+-----------------------------------------------------------------------------------
+LỌC KÝ TỰ LÀ GÌ? 
+- Lọc ký tự là giữ lại những ký tự hợp lệ, xóa những ký tự không hợp lệ.
+- Ví dụ: 
+  + input: "12a3b.4-5"
+  + output: "123.45"
+- Cách hoạt động cốt lõi là: 
+ + Luôn thoe flow: User nhập -> lấy value -> xử lý -> gán lại value
+
+Code pattern: 
+input.addEventListener("input", function(){
+    let value = input.value;
+
+    // xử lý value
+
+    input.value = value;
+});
+
+- Công cụ chính: regex
+ + Cú pháp: /string/
+ + Ví dụ: /[^0-9]/g
+  	-> Nghĩa là: ^ là phủ định (not), 0-9 là số
+	=> Tất cả ký tự không phải số.
+- Hàm quan trọng replace()
+ + Cú pháp: string.replace(regex,"");
+ + Ví dụ: "123abc".replace(/[^0.9]/g, ""); // "123"
+- Các kiểu phổ biến:
+ + Chỉ cho số: value = value.replace(/[^0.9]/g, "");
+ + chỉ cho số + dấu chấm: value = value.replace(/[^0-9.]/g, "");
+ + Chỉ cho số + âm + thập phân: value = value.replace(/[^0-9.-]/g, "");
