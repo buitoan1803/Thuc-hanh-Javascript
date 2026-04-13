@@ -1,0 +1,246 @@
+I) GIT LÀ GÌ?
+- Git là một hệ thống quản lý phiên bản tốt phổ biến.
+- Nó được Linus Torvalds tạo ra vào năm 2005 và được Junio Hamano duy trì từ đó đến nay.
+- Nó được dùng để: 
+ + Theo dõi các thay đổi mã
+ + Theo dõi ai đã thực hiện thay đổi
+ + Hợp tác lập trình
+
+1.1) Các khai niệm chính về Git:
+- Repository: Một thư mục nơi Git theo dõi dự án và lịch sử của nó.
+- Clone: Tạo một bản sao của khoa lưu trữ từ xa trên máy tính của bạn.
+- Stage: cho git biết những thay đổi nào bạn muốn lưu tiếp theo.
+- Commit: Lưu lại bản sao lưu các thay đổi đã được thêm vào khu vực chuẩn bị.
+- Branch: Phát triển đồng thời nhiều phiên bản hoặc tính năng khác nhau.
+- Merge: Kết hợp các thay dổi từ các nhánh khác nhau.
+- Pull: Lấy các thay đổi mới nhất từ kho lưu trữ từ xa.
+- Push: Gửi các thay đổi của bạn đến kho lưu trữ từ xa.
+
+1.2) Làm việc với Git: 
+- Khởi tạo Git trên một thư mục, biến nó thành một Repository.
+- Git hiện tạo một thư mục ẩn để theo dõi các thay đổi trong thư mục đó.
+- Khi một tập tin được thay đổi, thêm hoặc xóa, nó được coi là modified.
+- Bạn chọn các tệp đã chỉnh sửa mà bạn muốn thêm vào Stage.
+- Các tệp đã được thêm vào Stage được commit, điều này khiến Git lưu trữ một bản sao permanent của các tệp đó.
+- Git cho phép bạn xem toàn bộ lịch sử của mỗi lần commit.
+- Bạn có thể quay lại bất kỳ phiên bản commit nào trước đó.
+- Git không lưu trữ một bản sao riêng biệt của mọi tập tinh trong mỗi lần commit, mà chỉ theo dõi những thay
+đổi được thực hiện trong mỗi lần commit.
+
+1.3) Github là gì? 
+- Git không giống với Github. Github tạo ra các công cụ sử dụng Git.
+- Github là kho lưu trữ mã nguồn lớn nhất thế giới và thuộc sở hữu của Microsoft từ năm 2018.
+
+II) CÀI ĐẶT GIT:
+
+2.1) Xác minh quá trình cài đặt của bạn
+- Sau khi cài đặt, hãy kiểm tra xem Git có hoạt động hay không bằng cách mở terminal và chạy lệnh sau: 
+    git --version
+    git version 2.43.0.windows.1
+- Nếu Git đã được cài đặt, bạn sẽ thấy giao diện tương tự như sau:  git version X.Y.Z
+
+2.2) Trình chỉnh sửa mặc định:
+- Trong quá trình cài đặt, Git sẽ yêu cầu bạn chọn một trình soạn thảo văn bản mặc định.
+- Đặt VS Code làm trình soạn thảo mặc định: 
+    git config --global core.editor "code --wait"
+- Nếu không chắc chắn cứ chọn mặc định (Notepad trên Windows), có thể thay đổi như sau:
+    git config --global core.editor "notepad"
+
+III) CẤU HÌNH GIT:
+
+3.1) Tên người dùng: 
+- Tên của bạn sẽ được gắn kèm với các commit của bạn. Hãy thiết lập bằng lệnh: 
+    git config --global user.name "Your Name"
+=> Nếu bạn gõ sai chính tả hoặc nhầm lẫn, chỉ cần chạy lại lệnh với giá trị chính xác. Cài đặt sẽ ghi đè lên 
+cài đặt cũ.
+
+3.2) Địa chỉ email:
+- Địa chỉ email của bạn cũng được đính kèm vào các cam kết của bạn. Hãy thiết lập nó bằng lệnh:
+    git config --global user.email "Youremail@gamil.com"
+=> Nếu ạn quên thiết lập tên Email, Git sẽ nhắc bạn lần đầu tiên khi bạn thực hiện commit.
+
+IV) HƯỚNG DẪN BẮT ĐẦU SỬ DỤNG GIT:
+- Các bước quan trọng để bắt đầu: 
+ + Tạo thư mục dự án
+ + Điều hướng đến thư mục
+ + Khởi tạo kho lưu trữ Git
+
+4.1) Tạo thư mục: 
+- Bắt đầu tạo một thư mục mới cho dự án:
+    mkdir myproject
+    cd myproject
+ + mkdir: tạo một thư mục mới.
+ + cd: Thay đổi thư mục làm việc.
+
+4.2) Khởi tạo Git:
+
+- Bây giờ ta đã ở trong thư mục chính xác, chúng ta có thể khởi tọa Git trong thư mục đó: 
+    git init
+-> Bạn vừa tạo Repository Git đầu tiên cho mình.
+
+4.3) Repository là gì?
+- Repository Git là một thư mục mà Git theo dõi các thay đổi.
+- Repository này chứa toàn bộ lịch sử và các phiên bản của dự án của bạn.
+
+4.4) Điều gì xảy ra khi bạn chạy git init?
+- Git tạo một thư mục ẩn .git bên trong dự án của bạn.
+- Đây là nơi Git lưu trữ tất cả thông tin cần thiết để theo dõi các tập tin và lịch sử của bạn.
+
+V) GIT NEW FILES
+- New file là tệp mà bạn đã tạo hoặc sao chép vào thư mục dự án của mình, nhưng chưa thông báo cho Git để theo dõi.
+- Dưới đây là những điểm quan trọng cần biết: 
+ + Tạo một tệp mới
+ + ls- Liện kê các tệp trong thư mục
+ + git status- Kiểm tra xem những tệp nào đang được theo dõi.
+ + Hiểu về các tập tin chưa được theo dõi và đã được theo dõi.
+
+VI) MÔI TRƯỜNG DÀN DỰNG GIT:
+
+Môi trường dàn dựng là gì? 
+- Môi trường chuẩn bị giống như một phòng chờ để bạn thực hiện các thay đổi.
+- Bạn sử dụng lệnh này để cho Git biết chính xác những tẹp nào bạn muốn đưa vào commit tiếp theo.
+- Điều này cho phép bạn kiểm soát những gì được lưu vào lịch sử dự án của mình.
+- Dưới đâu đây là một số lệnh quan trọng để thiết lập môi trường thử nghiệm: 
+    git add <file> - Chuẩn bị tệp
+    git add --all hoặc - Thực hiện tất cả các thay đổi git add -A 
+    git status - Hãy xem những gì đã được dàn dựng.
+    git restore --staged <file> - bỏ chọn tệp
+
+VII) GIT COMMIT:
+
+Commit là gì?
+- Một commit giống như một điểm lưu trong dự án của bạn.
+- Nó ghi lại trạng thái các tập tin của bạn tại một thời điểm nhất định, kèm theo thông báo mô tả những thay đổi.
+- Bạn luôn có thể quay lại phiên bản commit trước đó nếu cần.
+- Dưới đây là một số lệnh quan trọng để thực hiện commit: 
+ + git commit -m "message" - Xác nhận các thay đổi đã được dàn dựng kèm theo thông báo.
+ + git commit -a -m "message" - Xác nhận tất cả các thay đổi đã theo dõi (Bỏ qua giai đoạn dàn dựng).
+ + git log - xem lịch sử commit
+
+VIII) GẮN THẺ GIT: 
+Các lệnh chính để gắn thẻ: 
+ + git tag <tagname> Tạo thẻ nhẹ
+ + git tag -a <tagname> -m "message" - Tạo thẻ chú thích
+ + git tag <tagname> <commit-hash> - gắn thẻ cho một commit cụ thể
+ + git tag - Danh sách thẻ
+ + git show <tagname> - Hiển thị chi tiết thẻ 
+
+8.1) Thẻ (tag) là gì? 
+- Trong Git, tag giống như một nhãn hoặc dấu trang cho một commit cụ thể.
+- Thẻ (tags) thường được sử dụng để đánh dấu những điểm quan trọng trong lịch sử dự án của bạn, 
+chẳng hạn như các bản phát hành(v1.0 hoặc v2.0).
+- Thẻ (tags) là một các đơn giản và đáng tin cậy để theo dõi các phiên bản và chia sẻ chúng với 
+nhóm hoặc người dùng của bạn.
+- Một số loại thẻ phổ biến bao gồm: 
+    + Releases: Thẻ cho phép bạn đánh dầu khi dự án của mình đã sẵn sàng để phát hành, nhờ đó bạn và những người
+    khác luôn có thể tìm thấy phiên bản chính xác đó sau này.
+    + Milestones: Sử dụng thẻ để làm nổi bật các mốc quan trọng, chẳng hạn như khi một tính năng lớn được 
+    hoàn thành hoặc một lỗi được khắc phục
+    + Deployment: Nhiều công cụ triển khai sử dụng thẻ (tag) để biết cần triền khai phiên bản mã nào.
+    + Hotfixes: Nếu bạn caanfsuawr lỗi trong một phiên bản cũ, thẻ (tags) giúp bạn dễ dàng tìm và vá đúng mã.
+8.2) Tạo thẻ nhẹ: 
+- Thẻ nhẹ chỉ đơn giải là tên gọi cho một commit.
+- Thao tác này nhanh chóng và đơn giản, nhưng không lưu trữ thông tin bổ sung.
+* Thẻ chú thích so với thẻ nhẹ:
+    + Annotated Tag: Lưu trữ tác giả, ngày thánh và nội dung tin nhắn. Được khuyến nghị sử dụng cho 
+    các bản phát hành và chia sẻ với người khác.
+    + Lightweight Tag: Chỉ là một tên đơn giản cho một commit (Không có thông tin bổ sung, như dấu trang).
+        VD: git tag v1.0
+
+8.3) Tạo thẻ chú thích (-a -m)
+- Thẻ chú thích lưu trữ tên của bạn, ngày tháng và một tin nhắn.
+- Phương pháp này được khuyến nghị cho hầu hết các trường hợp sử dụng.
+        git tag -a v1.0 -m "Version 1.0 release"
+
+8.4) Gắn thẻ một cam kết cụ thể:
+- Bạn có thể gắn thẻ cho một commit cũ hơn bằng cách chỉ định mã băm của nó:
+        git tag v1.1 1a2b3c4d
+- Thay thế 1a2b3c4d bằng mã băm của commit mà bạn muốn gắn thẻ.
+
+8.5) Danh sách thẻ:
+- Xem tất cả các thẻ trong kho lưu trữ của bạn: 
+        git tag
+
+8.6) Hiển thị chi tiết thẻ (git show)
+- Xem thông tin chi tiết về thẻ và commit mà nó trỏ đến: 
+        git show v1.0
+
+8.9) Đẩy thẻ đến từ xa:
+- Theo mặc định, các thẻ chỉ tồn tại trên máy tính cục bộ của bạn.
+- Nếu bạn muốn người khác thấy các thẻ của mình, bạn cần đẩy chúng lên kho lưu trữ từ xa.
+- Nếu bạn không chia sẻ thẻ của mình, chỉ bạn mới thấy chúng, và chỉ trong pham vi cục bộ.
+- Để đẩy lên một thẻ duy nhất trên kho lưu trữ từ xa của bạn (ví dụ: sau khi tạo thẻ phát hành): 
+    Ví dụ: Đẩy một thẻ đơn
+        git push origin v1.0
+- Để tất cả các thẻ cục bộ của bạn lên kho lưu trữ từ xa cùng một lúc (hữu ích nếu bạn đã tạo nhiều thẻ):
+    VD: Đẩy tất cả các thẻ:
+        git push --tags
+
+8.10) Xóa thẻ: 
+- Xóa thẻ cục bộ: 
+    VD: git tag -d v1.0
+- Xóa một thẻ khỏi kho lưu trữ từ xa:
+    VD: git push origin --delete tag v1.0
+
+8.11) Cập nhật hoặc thay thế thẻ (Buộc đẩy)
+- Nếu bạn cần di chuyển một thẻ (tag) sang một commit khác và cập nhật kho lưu trữ từ xa, hãy sử dụng lệnh sau --force:
+        git tag -f v1.0 <new-commit-hash>
+        git push --force origin v1.0
+
+8.12) Các phương pháp tốt nhất để gắn thẻ:
+- Sử dụng thẻ (tags) để đánh dấu các bản phát hành, các cột mốc quan trọng hoặc các điểm ổn định trong dự án của bạn.
+- Luôn sử dụng thẻ có chú thích (với -a, -m) cho bất kì nội dung nào công khai hoặc được chia sẻ.
+- Hãy tạo thẻ (tag) Sau khi vượt qua tất cả các bài kiểm tra hoặc trước khi triển khai/ phát hành mã.
+
+8.13) Khắc phục sự cố
+- Thẻ đã tồn tại? Hãy sử dụng chức năng xóa để tạo lại. git tag -d <tagname>
+- Lỡ đẩy nhầm thẻ? Hãy xóa thẻ đó cả trên máy cục bộ và máy chủ từ xa, sau đó đẩy thẻ đúng.
+- Thẻ không hiển thị trên máy chủ từ xa? Hãy nhớ đẩy thẻ bằng lệnh 
+        git push origin <tagname>   
+    hoặc
+        git push --tags
+- Cần ghi đè lên một thẻ trên điều khiển từ xa? Bạn có thể ép buộc ghi đè thẻ bằng phím, nhưng hãy cẩn thận. Thao tác 
+này sẽ ghi đè lên thẻ cho tất cả người dùng điều khiển từ xa. 
+        git push --force origin <tagname>
+
+IX) GIT STASH:
+- Các lệnh chính để lưu trữ:
+ + git stash - Lưu lại các thay đổi của bạn
+ + git stash push -m "message" - Lưu trữ kèm lời nhắn
+ + git stash list - Liệt kê tất cả các kho chứa
+ + git stash branch <branchname> - Tạo nhánh từ kho lưu trữ
+
+9.1) Git Stash là gì? Tại sao nên sử dụng nó?
+- Đôi khi bạn cần nhanh chóng chuyển sang tác vụ khác hoặc sửa lỗi, nhưng bạn chưa sẵn sàng hoàn tất công việc của mình.
+git stash cho phép bạn lưu các thay đổi chưa được lưu và quay lại thư mục làm việc sạch.
+- Bạn có thể quai lại cà khôi phục các thay đổi của mình sau.
+- Dưới đây là mốt số trường hợp sử dụng phổ biến:
+ + Chuyển nhánh an toàn: Hãy lưu công việc của bạn trước khi chuyển nhanh.
+ + Xử lý các tình huống khẩn cấp: Tạm dừng công việc của bạn để khắc phục sự cố khẩn cấp, sau đó khôi phục lại.
+ + Bảo vệ công việc đang tiến hành của bạn: Tránh các thao tác commit lộn xộn hoặc mất dữ liệu thay đổi.
+
+9.2) Lưu trữ các thay đổi của bạn (git stash)
+- Lưu các thay đổi hiện tại của bạn (cả các tệp đã được thêm vào vùng chờ và các tệp chưa được thêm vào vùng chờ) bằng lệnh:
+(*) Những gì được cất giấu? 
+ + Các tệp được theo dõi (cả tệp đã được thêm vào khu vực chờ và tệp chưa được thêm vào khu vực chờ) đều được lưu trữ tạm 
+ thời them mặc định.
+ + Các tệp chưa được theo dõi (các tệp mới chưa được thêm vào Git) sẽ không được lưu trữ tạm thời theo mặc định.
+ + Để lưu trữ các tệp chưa được theo dõi, hãy sử dụng: 
+        git stash -u 
+        hoặc
+        --include-untracked
+
+    VD: Lưu trữ công việc của bạn
+        git stash
+- Lệnh này được lưu các thay đổi của bạn và dọn dẹp thư mục làm việc để bạn có thể chuyển đổi giữa các tác vụ hoặc nhánh một 
+cách an toàn
+- Các thay đổi của bạn hiện đã được lưu vào ngăn xếp.
+
+(*) Ngắn chưa đồ là gì? 
+ + Mỗi lần bạn chạy git stash, các thay đổi của bạn sẽ được lưu vào đầu một "ngăn xếp"
+ + Kho đồ mới nhất nằm ở trên cùng, và bạn có thể thêm hoặc xóa các kho đồ từ trên xuống dưới, hoặc chọn một kho đồ cụ 
+ thể từ danh sách.
+
+- Thư mục làm việc của bạn đã được dọn dẹp và bạn có thể chuyển nhánh hoặc tải xuống các bản cập nhật một cách an toàn.
+
+9.3) 

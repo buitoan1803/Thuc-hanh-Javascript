@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Xác định chiều rộng và chiều cao của một phần tử. Có bao gồm cả viền và đệm nhưng không tính margin */
+}
+
+body{
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    justify-content: center; /* căn giữa theo chiều ngang màn hình*/
+    align-items: center; /*Căn giữa theo chiều dọc màn hình*/
+    min-height: 60vh; /*theo màn hình*/
+}
+
+.login-form{
+    
+    text-align: center;
+    max-width: 500px ;
+    background: wheat;
+    
+}
+.login-form h1 {
+    padding: 1rem;
+    margin: 1rem;
+}
+.login{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    padding: 5px;
+    gap: 10px;
+}
+.login label{
+    position: relative;
+    right: 120px;
+}
+.login input{
+    padding: 5px;
+    border: none;
+}
+
+.login-btn{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    margin: 1rem;
+    gap: 20px;
+}
+
+.login-btn button{
+    width: 5rem;
+    height: 1.5rem;
+    background: yellowgreen;
+    
+    border: none;
+}
+
+
+

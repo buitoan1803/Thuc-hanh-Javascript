@@ -291,7 +291,7 @@
 //     console.log(row);
 // }
 
-// let i = 1;
+let i = 1;
 
 // while(i <= 5){
 //     let row = "";
@@ -319,14 +319,14 @@
 //     i++;
 // }
 
-// for (i = 1; i <= 5; i++){
-//     let row = "";
-//     for(j = 1; j <= 9; j++){
-//         if(i === 1 || i === 5 || j === 1 || j === 9){
-//             row += "*";
-//         }else{
-//             row += " ";
-//         }
-//     }
-//     console.log( i + ":" + row);
-// }
+for (i = 1; i <= 5; i++){
+    let row = "";
+    for(j = 1; j <= 9; j++){
+        if(i === 1 || i === 5 || j === 1 || j === 9){
+            row += "*";
+        }else{
+            row += " ";
+        }
+    }
+    console.log( i + ":" + row);
+}

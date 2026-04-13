@@ -1,0 +1,150 @@
+1) GIỚI THIỆU VỀ JS
+-JavaScript là ngôn ngữ lập trình dùng để tạo tương tác và xử lý logic cho trang web.
+Em dùng nó để bắt sự kiện như click button, xử lý dữ liệu, thay đổi HTML/CSS thông qua
+DOM và xây dựng các chức năng như popup, search hoặc form validation.
+--------------------------------------------------------------------------
+2) BIẾN JS: 
+* Có 3 cách khai báo biến: 
+ var: là kiểu cũ, dễ lỗi 
+ let: đổi được giá trị
+ const: Không đổi được giá trị
+
+* Sự khác nhau giữa var, let, const:
+ - var: 
+  + Cho phép khai báo lại
+  + Nhưng dễ bug
+ - let: 
+  + block scope
+  + không khai báo lại trong cùng scope
+  + Có thể gán lại
+ - const: 
+  + block scope
+  + Không gán lại
+  + Bắt buộc gắn giá trị ban đầu
+* const object có sửa được không? 
+ - Sửa được thuộc tính. Vì const chỉ khóa địa chỉ tham chiếu, chứ không khóa nội dung object.
+----------------------------------------------------------------------------
+ 3) Có những kiểu dữ liệu nào?
+- Primitive là các kiểu dữ liệu như string, number, boolean, được lưu và copy theo giá trị.
+- Reference là object, array, function, khi gán sẽ copy địa chỉ trong memory nên nhiều biến 
+có thể cùng trỏ tới một dữ liệu.
+ - string: là khai báo chuỗi ký tự trong dấu ""
+ - Number: là khai báo số 
+ - boolean: kiểu khai báo biểu diễn logic true/false.
+ - object: Là kiểu khai báo cấu trúc dữ liệu dùng để lưu thông tin theo dạng key-value
+ - array: Dùng để khai báo mảng
+ - null:biểu diễn tệp không có giá trị do mình đưa vào
+ - undefined: là kiểu biến chưa được gán giá trị
+----------------------------------------------------------------------------
+4) == và === 
+* == là so sánh lỏng vì JavaScript sẽ ép kiểu hai vế về cùng dạng trước khi so sánh, điều này dễ gây bug.
+* === là so sánh chặt vì kiểm tra cả giá trị và kiểu dữ liệu, nên chính xác và an toàn hơn.
+Trong project em luôn ưu tiên === để tránh lỗi do ép kiểu ngầm.
+-> Luôn dùng ===
+--------------------------------------------------------------------------------
+5)Array methods
+- push(): Thêm phần tử vào cuối mảng
+- pop(): Xóa phần tử cuối mảng
+- shift(): Xóa phần tử đầu mảng
+- unshift(): Thêm phần tử vào đầu mảng
+- length(): Đếm số phần tử trong mảng
+- forEach() dùng để duyệt qua từng phần tử và xử lý logic, nhưng không trả về mảng mới.
+- map() Duyệt toàn bộ phần tử, mỗi phần tử sẽ được transform thành giá trị mới, 
+ rồi trả về mảng mới có cùng số lượng phần tử.
+- filter(): duyệt qua toàn bộ mảng, lấy tất cả phần tử thỏa điều kiện rồi trả về một mảng mới.
+- find(): Tìm phần tử đầu tiên (Giống như lọc phần tử trong điều kiện nhưng chỉ lấy 1 
+phần tử đầu tiên của điều kiện) 
+- reduce(): Gộp nhiều phần tử thành 1 kết quả
+--------------------------------------------------------------------------------
+6) String methods
+Các method quan trọng phải nhớ:
+
+6.1. slice()
+Hàm này trích xuất một phần của chuỗi và trả về phần đã trích xuất trong một chuỗi mới. 
+Nếu tham số có giá trị âm, vị trí sẽ được tính từ cuối chuỗi
+VD: let str = "hello"
+ consolo.log(str.slice(1, 4); // Nó sẽ hiển thị chuỗi từ 1-4 => "ell"
+Có thể hiểu như là sẽ đếm dữ liệu trong string từ 0-5 rồi chọn vùng muốn cắt và in ra.
+
+6.2. substring()
+Cũng dùng gần giống với slice() Điểm khác biệt là các giá trị bắt đầu và kết thúc nhỏ 
+hơn 0 được coi là 0 trong. Nếu bạn bỏ qua tham số thứ hai, substring()phần còn lại của chuỗi sẽ bị cắt bỏ.
+
+6.3. trim()
+Xóa khoảng trắng của chuỗi.
+VD: "   hello   ".trim(); // thì khi này trim() sẽ xóa khoảng trắng dư thừa đi và trả lại kết quả 
+là "hello".
+
+6.4. includes()
+kiểm tra có chứa không.
+VD: "hello".includes("he"); // Kết quả hiển thị sẽ là true / false. Trong ví dụ thì sẽ hiển thị kết quả 
+là true. Tuy nhiên, cần lưu ý: includes() có phân biệt chữ hoa và chữ thường nên nếu không nhập đúng như 
+string khai báo mà kiểm tra thì kết quả vẫn sẽ trả về false.
+
+6.5. indexOf()
+Dùng để tìm vị trí.
+VD: "hello".replace("l"); // Kết quả trả về sẽ là "2". Vì nó sẽ đếm vị trí trong string đã khai báo, 
+và nếu 2 ký tự giống nhau đứng trong cùng chuỗi thì sẽ hiển thị vị trí đầu tiên của ký tự đó.
+
+6.6. replace()
+Dùng để thay thế nội dung trong chuỗi string.
+VD: "hello",replace("h", "H"); // kết quả trả về sẽ là "Hello". Khi muốn thay đổi nội dung trong string 
+thì cần đưa ra đoạn cần thay đổi và nôi dung muốn thay đổi cách nhau một dấy ",".
+
+6.7. split() (cực quan trọng)
+Dùng để biến chuỗi string thành mảng array.
+VD: "a, b, c".split(","); //['a', 'b', 'c']
+
+6.8. toUpperCase()/toLowerCase()
+toUpperCase dùng để chuyển chuỗi thành chứ in hoa
+toLowerCase dùng để chuổi chuỗi về chữ thường 
+VD: 
+"hello".toUpperCase(); // "HELLO"
+"HELLO".toLowerCase(); // "hello"
+
+6.9. localeCompare()
+- Dùng để so sánh chuỗi string 
+- Cú pháp: a.localeCompare(b)
+* QUY TẮC: 
++ Nếu < 0 thì a đứng trước b
++ Nếu > 0 thì b đứng trước a
++ Nếu = 0 thì giống nhau
+
+(+) Dùng trong sort():
+arr.sort((a, b) => a.name.localeCompare(b.name));
+=> Sắp xếp từ A -> Z
+
+arr.sort((a, b) => b.name.localeCompare(a.name));
+=> Đảo ngược lại xếp từ Z -> A
+----------------------------------------------------------------------------------
+7 ) Vì sao them cart không push trực tiếp?
+- Nếu sản phẩm đã có trong cart thì em dùng find() để tìm, nếu có rồi thì tăng quantity chưa có thì mới push
+8) Vì sao reload mất cart? 
+-Vì biến chỉ lưu trong RAM, khi reload RAM reset thì dữ liệu sẽ mất. Muốn lưu lại khi reload vẫn còn 
+cart thì dùng localStorage
+-------------------------------------------------------------------------------------------
+9) event là gì ?
+- even là hành động của người dùng như click, nhập input, hover
+10) DOM là gì?
+- DOM là một mô hình dạng cây biểu diễn HTML dưới dạng object
+- DOM giúp js sửa nội dung, style, thêm sửa xóa phần tử
+11) Vì sao khi lấy dữ liệu từ localStorage em phải dùng JSON.parse()?
+- Vì localStorage chỉ lưu được dạng string 
+- JSON.parse() giúp biến string thành array hoặc object lại như ban đầu
+(
+  - localStorage lấy ra luôn là string
+    + lưu vào -> JSON.stringify()
+    + lấy ra -> JSON.parse()
+)
+
+12) Function declaration và function expression khác nhau như thế nào?
+- Function declaration là cách khai báo function trực tiếp bằng từ khóa function và được hoisting nên
+có thể gọi trước khi khai báo.
+- Function expression là function được gán vào một biến, thường không gọi trước được vì phụ thuộc vào 
+quá trình khởi tạo biến.
+- CALLBACK FUNCTION là một function được truyền vào function khác như một tham số để được thực 
+thi sau khi một tác vụ nào đó hoàn thành.
+
+(*) for: là vòng lặp truyền thống, linh hoạt hơn, dùng khi cần break, continue hoặc xử lý logic phức tạp.
+(*) map():  là method của array, dùng để duyệt mảng và trả về một mảng mới sau khi transform từng phần tử.
+(*) forEach() dùng khi chỉ muốn duyệt qua mảng để xử lý, ví dụ log dữ liệu, update UI, gọi API, mà không cần mảng mới.

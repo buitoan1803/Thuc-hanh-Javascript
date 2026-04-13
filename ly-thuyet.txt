@@ -109,14 +109,15 @@ Cú pháp: arr.splice(vị trí, số lượng xóa, phần tử mới)
  + a > b -> a dương -> b lên trước
 - Sắp xếp tăng dần: arr.sort((a, b) => b - a)
 
-
+7. forEach() 
+- dùng để duyệt qua từng phần tử và xử lý logic, nhưng không trả về mảng mới.
 
 -----------------------------------------------------------------------------------------------------
 LOCAL STORAGE LÀ GÌ?
 - localStorage là bộ nhớ trình duyệt
 - Nó dùng để: 
  + Lưu dữ liệu
- + Giữ lại khe reload
+ + Giữ lại khi reload
  + Không mất khi tắt tab
 VD: 
 localStorage.setItem("name", "Toan");

@@ -250,7 +250,82 @@
 // let newArr = item.map(item => item * 2);
 
 
-let str = "hello";
-let arr = "a,b,c";
-console.log(arr.split(","))
-console.log(str.indexOf());
+// let str = "hello";
+// let arr = "a,b,c";
+// console.log(arr.split(","))
+// console.log(str.indexOf());
+
+// let i = 1;
+// let result = i > 0 ? "Dương 1" : "bằng 0"; 
+// console.log(result)
+
+// for (let i = 1; i <= 5; i++) {
+//    if (i === 3) continue;
+//    console.log(i);
+// }
+// function greet(name = "Guest") {
+//    console.log(name);
+// }
+// greet();
+// function sum(...nums) {
+//    console.log(nums);
+// }
+// sum(1,2,3,4);
+
+
+// let text = "Javascript";
+// console.log(text.indexOf("S"));
+// let products = ["Laptop", "Mouse", "Keyboard"];
+// products.splice(1, 0, "Tablet")
+// console.log(products.length);
+// console.log(products);
+// const user = { name: "Toàn" };
+// user.name = "AIFront";
+
+// console.log(user)
+
+// let age = 20;
+// age = 21;
+// console.log(age)
+
+// for( let item = 1; item < age; item++){
+//     var a = 2;
+//     let b = 3;
+//     const c = 4;
+// }
+// console.log(b)
+
+// let year = prompt ("Nhập năm:")
+
+// if(year % 400 === 0 || year % 4 === 0 & year % 100){
+//     console.log("Năm dương nhuận");
+
+// }else{
+//     console.log("Năm dương thường");
+// }
+// let name = "toàn";
+// function hello(name, callback) {
+//   console.log(name);
+//   callback();
+// }
+
+// let a = "BuiQuocToan";
+// console.log(a.slice(1,4))
+// console.log(a.substring(-1, 4))
+
+
+// const obj1 = {
+//   name: "toàn",
+//   age: 22
+// };
+// const obj2 = {
+//   name: "BÙI",
+//   ...obj1
+// };
+
+// console.log(obj2);
+for (let i = 0; i < 10; i++) {
+  if (i === 3) { break; }
+  text += "The number is " + i + "<br>";
+  console.log(i)
+}
