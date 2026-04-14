@@ -232,9 +232,11 @@ git stash cho phép bạn lưu các thay đổi chưa được lưu và quay l�
 
     VD: Lưu trữ công việc của bạn
         git stash
-- Lệnh này được lưu các thay đổi của bạn và dọn dẹp thư mục làm việc để bạn có thể chuyển đổi giữa các tác vụ hoặc nhánh một 
+            Saved working directory and index state WIP on main: 1234567 Add new feature
+
+    + Lệnh này được lưu các thay đổi của bạn và dọn dẹp thư mục làm việc để bạn có thể chuyển đổi giữa các tác vụ hoặc nhánh một 
 cách an toàn
-- Các thay đổi của bạn hiện đã được lưu vào ngăn xếp.
+    + Các thay đổi của bạn hiện đã được lưu vào ngăn xếp.
 
 (*) Ngắn chưa đồ là gì? 
  + Mỗi lần bạn chạy git stash, các thay đổi của bạn sẽ được lưu vào đầu một "ngăn xếp"
@@ -243,4 +245,113 @@ cách an toàn
 
 - Thư mục làm việc của bạn đã được dọn dẹp và bạn có thể chuyển nhánh hoặc tải xuống các bản cập nhật một cách an toàn.
 
-9.3) 
+9.3) Lưu trữ kèm tin nhắn (git stash push -m)
+- Thêm lời nhắn để nhớ những gì bạn dã cất giữ:
+    VD: Lưu trữ kèm tin nhắn:
+        git stash push -m "WIP: homepage redesign"
+            Saved working directory and index state On main: WIP: homepage redesign
+
+- Lệnh này cho phép bạn thêm một thông báo mô tả vào kho lưu trữ của mình để bạn có thể nhớ mình đang làm việc gì.
+
+9.4) Liệt kê tất cả kho chứa (git stash list)
+- Xem tất cả các kho lưu trữ đã lưu của bạn: 
+    Ví dụ: Liệt kê các kho lưu trữ:
+        git stash list
+            stash@{0}: On main: WIP: homepage redesign
+            stash@{1}: WIP on main: 1234567 Add new feature
+
+    + Lệnh này hiển thị tất cả các kho đồ bạn đã lưu cho đến nay, cùng với tên và tin nhắn của chúng.
+
+9.5) Hiển thị chi tiết kho (git stash show)
+- Xem những thay đổi trong bản cập nhật mới nhất:
+    Ví dụ: Hiển thị kho lưu trữ mới nhất:
+        git stash show
+            src/index.html | 2 +-
+            1 file changed, 1 insertion(+), 1 deletion(-)
+            
+    + Lệnh này cung cấp bản tóm tắt về các tệp và thay đổi có trong kho lưu trữ gần đây nhất của bạn.
+
+- Để xem toàn bộ sự khác biệt: 
+    Ví dụ: Hiển thị toàn bộ sự khác biệt    
+        git stash show -p
+            diff --git a/src/index.html b/src/index.html
+            index 1234567..89abcde 100644
+            --- a/src/index.html
+            +++ b/src/index.html
+            @@ ...
+    + Lệnh này hiển thị chính xác các dòng đã được thay đổi trong bản sao lưu gần đây nhất của bạn.
+
+9.6) Áp dụng kho lưu trữ mới nhất (git stash apply)
+- Khôi phục các thay đổi đã lưu trữ gần đây nhất (giữ nguyên các thay đổi đã lưu trữ trong ngăn xếp):
+    Ví dụ: Áp dụng kho lưu trữ mới nhất:
+        git stash apply
+            On branch main
+            Changes not staged for commit:
+            (use "git add ..." to update what will be committed)
+            (use "git restore ..." to discard changes in working directory)
+                modified:   src/index.html
+
+    + Lệnh này khôi phục những thay đổi đã được lưu trữ gần đây nhất của bạn, nhưng vẫn giữ lại các thay đổi đó trong danh
+    sách để bạn có thể sử dụng lại nếu cần.
+
+9.7) Áp dụng kho lưu trữ cụ thể (git stash apply stash@{n})
+- Khôi phục một kho lưu trữ cụ thể từ danh sách: 
+    Ví dụ: Áp dụng một kho lưu trữ cụ thể:
+        git staged apply stash@{1}
+            On branch main
+            Changes not staged for commit:
+                modified: src/index.html
+    
+    + Lệnh này cho phép bạn khôi phục một mục lưu trữ cụ thể từ danh sách của mình, chứ không chỉ mục lưu trữ gần đây nhất.
+
+9.8) Mở kho chứa (git stash pop)
+- Áp dụng bản sao lưu mới nhất và Xóa nó khỏi ngăn xếp: 
+    Ví dụ: Mở kho đồ: 
+        git stash pop
+            On branch main
+            Changes not staged for commit:
+                modified: src/index.html
+            Dropped refs/stash@{0} (abc1234d5678)
+    + Lệnh này khôi phục kho lưu trữ gần đây nhất của bạn và đồng thời xóa nó khỏi danh sách.
+
+9.9) Thả một đống đồ (git stash drop)
+- Xóa kho lưu trữ cụ thể khi bạn không còn cần đến nó nữa:
+    Ví dụ: Thả vật phẩm:
+        git stash drop stash@{0}
+            Dropped stash@{0} (abc1234d5678)
+    + Lệnh này sẽ xóa một kho lưu trữ cụ thể khỏi danh sách của bạn khi không còn cần đến nó nữa.
+
+9.10) Xóa tất cả kho lưu trữ (git stash clear)
+- Xóa tất cả các kho lưu trữ của bạn cùng một lúc:
+    Ví dụ: Xóa tất cả kho lưu trữ: 
+        git stash clear
+    
+    + Lệnh này sẽ xóa tất cả kho đồ của bạn cùng một lúc. Hãy cẩn thận! Không thể hoàn tác thao tác này!
+
+9.11) Phân nhánh từ kho lưu trữ (git stash branch)
+- Tạo một nhánh mới và áp dùng stash cho nhánh đó.
+- Hữu ích nếu công việc đã lưu trữ muốn phát triển thành một nhánh  tính năng riêng biệt: 
+    Ví dụ: Tạo nhánh từ kho lưu trữ:
+        git stash branch new-feature stash@{0}
+            Switched to a new branch 'new-feature'
+            On branch new-feature
+            Changes not staged for commit:
+                modified:   src/index.html
+            Dropped stash@{0} (abc1234d5678)
+    + Lệnh này tạo ra một nhánh mới và áp dụng các thay đổi đã lưu trữ của bạn vào nhánh đó.
+    + Điều này hữu ích nếu bạn quyết định công việc của mình nên trở thành một nhánh tính năng riêng biệt.
+
+9.12) Các phương pháp tốt nhất để cất giữ đồ đạc
+- Hãy sử dụng thông điệp rõ ràng khi cất giấu đồ đạc: git stash push -m "WIP: feature name"
+- Đừng sử dụng các bản nháp như nơi lưu trữ dài hạn - Hãy hoàn tất công việc của bạn càng sớm càng tốt.
+- Hãy thường xuyên kiểm tra xem danh sách vật phẩm dự trữ của bạn và dọn dẹp những vật phẩm cũ mà bạn không còn cần nữa.
+
+9.13) Khắc phục sự cố
+- Bạn có bị mất các thay đổi của mình không? Hãy thử git stash list và git stash apply để khôi phục lại công việc đã lưu trữ.
+- Lệch Stash không được áp dụng trơn tru? Có thể bạn cần giải quyết xung đột, giống như khi hợp nhất. 
+    Git sẽ đánh dấu các xung đột trong tệp của bạn để giải quyết.
+- Các tệp chưa được theo dõi bị thiếu? Theo mặc định, Các tệp chưa được theo dõi sẽ không được lưu trữ tạm thời.
+    Nếu bạn cần lưu trữ chúng, hãy sử dụng git stash -u lần sau.
+- Lỡ tay xóa hết tất cả kho đồ? Rất tiếc, thao tác này là vĩnh viễn. Luôn kiểm tra kỹ trước khi chạy git stash clear
+
+(=) Stashes rất hữu ích cho công việc tạm thời, nhưng không thể thay thế cho commit!
