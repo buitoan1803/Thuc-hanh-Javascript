@@ -40,8 +40,11 @@ body{
 
 .list li{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
     padding: 2px;
-    margin: 5px;
+    margin-bottom: 15px;
     gap: 20px;
 }
 
@@ -52,6 +55,7 @@ body{
 }
 
 .delete{
+    
     margin: 3px;
     padding: 5px;
     background: greenyellow;

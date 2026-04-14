@@ -12,9 +12,9 @@ render();
 function render() {
     list.innerHTML = users
                 .map(item => `<li data-id="${item.id}">
-                     <span>${item.name} - ${item.age}</span> 
-                     <button class="edit">Edit</button> 
-                     <button class="delete">x</button></li>`)
+                     <span>${item.name} - ${item.age}</span>
+                     <div><button class="edit">Edit</button> 
+                     <button class="delete">x</button></div></li>`)
                 .join("");
 }
 
