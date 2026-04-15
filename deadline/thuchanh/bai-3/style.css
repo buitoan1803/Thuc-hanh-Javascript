@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  min-height: 100vh;
+  position: relative;
+}
+
+.sidebar {
+  background: green;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.content {
+  padding: 60px 20px 20px;
+}
+
+.toggle-desktop,
+.toggle-mobile {
+  position: fixed;
+  top: 10px;
+  padding: 10px 15px;
+  border: none;
+  background: green;
+  color: white;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.toggle-desktop {
+  left: 10px;
+}
+
+.toggle-mobile {
+  right: 10px;
+  display: none;
+}
+
+.app.sidebar-hidden {
+  grid-template-columns: 0 1fr;
+}
+
+.app.sidebar-hidden .sidebar {
+  overflow: hidden;
+  padding: 0;
+}
+
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.card img {
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.pagination button {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background: green;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .toggle-desktop {
+    display: none;
+  }
+
+  .toggle-mobile {
+    display: block;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: 0.3s;
+    z-index: 999;
+  }
+
+  .sidebar.show {
+    transform: translateX(0);
+  }
+}

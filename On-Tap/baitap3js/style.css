@@ -1,0 +1,140 @@
+/* Reset mặc định của trình duyệt */
+* {
+  margin: 0; /* Xóa khoảng cách ngoài mặc định */
+  padding: 0; /* Xóa khoảng cách trong mặc định */
+  box-sizing: border-box; /* width + height sẽ tính luôn padding và border */
+}
+
+/* Khối cha toàn bộ app */
+.app {
+  display: grid; /* Chia layout theo dạng lưới */
+  grid-template-columns: 250px 1fr; /* 2 cột: sidebar 250px + content chiếm phần còn lại */
+  min-height: 100vh; /* Chiều cao tối thiểu full màn hình */
+  position: relative; /* Làm mốc cho các phần tử con nếu cần */
+}
+
+/* Thanh sidebar bên trái */
+.sidebar {
+  background: green; /* Màu nền xanh lá */
+  color: white; /* Chữ màu trắng */
+  padding: 20px; /* Khoảng cách bên trong */
+  text-align: center; /* Căn chữ giữa */
+}
+
+/* Phần nội dung chính */
+.content {
+  padding: 60px 20px 20px; /* top right bottom left */
+  /* top 60px để tránh đè nút toggle */
+}
+
+/* Style chung cho 2 nút toggle */
+.toggle-desktop,
+.toggle-mobile {
+  position: fixed; /* Luôn đứng cố định trên màn hình */
+  top: 10px; /* Cách mép trên 10px */
+  padding: 10px 15px; /* Kích thước nút */
+  border: none; /* Bỏ viền mặc định */
+  background: green; /* Nền xanh lá */
+  color: white; /* Chữ trắng */
+  cursor: pointer; /* Hover thành bàn tay */
+  z-index: 1000; /* Luôn nổi trên các phần tử khác */
+}
+
+/* Nút desktop nằm góc trái */
+.toggle-desktop {
+  left: 10px;
+}
+
+/* Nút mobile nằm góc phải */
+.toggle-mobile {
+  right: 10px;
+  display: none; /* Desktop ẩn nút này */
+}
+
+/* Khi ẩn sidebar ở desktop */
+.app.sidebar-hidden {
+  grid-template-columns: 0 1fr; 
+  /* Sidebar co về 0, content full width */
+}
+
+/* Sidebar khi bị ẩn */
+.app.sidebar-hidden .sidebar {
+  overflow: hidden; /* Ẩn nội dung bị tràn */
+  padding: 0; /* Xóa padding tránh dư khoảng trắng */
+}
+
+/* Khu vực hiển thị card user */
+.user-grid {
+  display: grid; /* Grid layout cho card */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  /* Tự chia cột responsive:
+     mỗi card min 220px, tối đa tự dãn */
+  gap: 20px; /* Khoảng cách giữa các card */
+}
+
+/* Card từng user */
+.card {
+  border: 1px solid #ddd; /* Viền xám nhẹ */
+  padding: 15px; /* Khoảng cách bên trong */
+  text-align: center; /* Căn giữa nội dung */
+  border-radius: 8px; /* Bo góc mềm */
+}
+
+/* Avatar user */
+.card img {
+  border-radius: 50%; /* Làm ảnh tròn */
+  margin-bottom: 10px; /* Cách tên user */
+}
+
+/* Khu vực phân trang */
+.pagination {
+  margin-top: 20px; /* Cách card phía trên */
+  display: flex; /* Các nút nằm ngang */
+  gap: 10px; /* Khoảng cách giữa nút */
+}
+
+/* Nút phân trang */
+.pagination button {
+  padding: 8px 12px; /* Kích thước nút */
+  cursor: pointer; /* Hover bàn tay */
+}
+
+/* Nút page đang active */
+.pagination button.active {
+  background: green; /* Màu nổi bật */
+  color: white;
+}
+
+/* Responsive cho tablet + mobile */
+@media (max-width: 768px) {
+  .app {
+    grid-template-columns: 1fr; 
+    /* Mobile chỉ còn 1 cột */
+  }
+
+  .toggle-desktop {
+    display: none; /* Ẩn nút desktop */
+  }
+
+  .toggle-mobile {
+    display: block; /* Hiện nút mobile */
+  }
+
+  .sidebar {
+    position: fixed; /* Sidebar đè lên content */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full ngang màn hình */
+    height: 100vh; /* Full cao màn hình */
+    transform: translateX(-100%);
+    /* Đẩy sidebar ra ngoài màn hình bên trái */
+    transition: 0.3s; /* Hiệu ứng trượt mượt */
+    z-index: 999; /* Nổi trên content */
+  }
+
+  /* Khi click hiện sidebar */
+  .sidebar.show {
+    transform: translateX(0);
+    /* Trượt sidebar vào màn hình */
+  }
+}
