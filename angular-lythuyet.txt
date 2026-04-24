@@ -1,0 +1,273 @@
+CHƯƠNG I: GIỚI THIỆU VỀ ANGULAR:
+
+1) ANGULAR là gì ?
+- Angular là framework sử dụng TypeScript, giúp phát triển ứng dụng web một cách có cấu
+trúc dễ quản lý và bảo trì.
+- Angular cung cấp khả năng two-way data binding giữa mô hình (model) và giao diện người
+dùng view
+
+2) Angular hoạt động như thế nào?
+- Angular biên dịch các mẫu của bạn thành mã Javascript hiệu quả và cập nhật DOM khi trang 
+thái của thành phần thay đổi.
+ + Khai báo giao diện người dùng bằng các mẫu dựa trên HTML.
+ + Liên kết dữ liệu bằng phép nội suy và các chỉ thị.
+ + Xử lý các sự kiện và thông tin đầu vào từ người dùng.
+ + Lấy dữ liệu bằng HttpClient (Observables)
+ + Điều hướng bằng bộ định tuyến.
+- Angular hoạt động theo tree thư mục
+3) Ưu điểm và nhược điểm:
+* Nhược điểm:
+ - Angular không có Virtual DOM như React, điều này có thể dẫn đến việc cập nhật DOM thực có
+ phần chậm hơn trong các ứng dụng lớn.
+ - Angular là một framework lớn và có độ phức tạp cao, đặc biệt đối với những người mới bắt
+ đầu, với nhiều khái niệm cần phải học.
+
+* Ưu điểm: 
+ - 
+===========================================================================================
+CHƯƠNG II: HƯỚNG DẪN BẮT ĐẦU VÓI ANGULAR:
+
+1) Kiểm tra Node.js:
+- Bộ công cụ của Angular (công cụ dòng lệnh và công cụ xây dựng) chạy trên Node.js và sử
+dụng spm để cài đặt các gói.
+- Chạy lệnh này để xác nhận Node.js và npm đã được cài đặt và có trong biến môi trường path:
+        node -v
+    + Lệnh này sẽ hiển thị phiên bản Node.js đã cài đặt của bạn, ví dụ như:
+        v20.x.x
+    + Angular hoạt động tốt nhất với phiên bản LTS (Hỗ trợ dài hạn) hiện tại (18 hoặc 20)
+- Có thể kiểm tra npm: 
+        npm -v
+    + npm là trình quản lý gói của Node.js
+    + Lệnh này sẽ in ra phiên bản npm của bạn, ví dụ:
+        10.x.x
+    + npm sẽ được cài đặt tự động cùng với Node.js
+
+2) Cài đặt Angular CLI
+- Angular CLI là công cụ chính thức để tạo, xây dựng và chạy các ứng dụng Angular.
+- Giao diện dòng lệnh (CLI) tạo dự án, chạy máy chủ phát triển và cung cấp các lệnh hữu ích.
+- Cài đặt Angular CLI trên toàn hệ thống:
+        npm install -g @angular/cli
+
+- Việc cài đặt nó trên toàn hệ thống ng giúp lệnh này có thể sử dụng được ở mọi nơi.
+- Cũng có thể dùng npx mà không cần cài đặt cục bộ.
+- Nếu gặp lỗi về quyền truy cập, hãy sử dụng npxhoặc chạy terminal với quyền quản trị viên.
+
+3) Xác minh Angular CLI
+- Kiểm tra lại quá trình cài đặt để đảm bảo ng nó nằm trong biến môi trường PATH và các 
+phiên bản tương thích.
+        ng version
+    + Hiển thị phiên bản của Angular CLI, Node.js và gói Angular để bạn có thể xác nhận 
+    quá trình cài đặt:
+        Angular CLI: 18.x.x 
+        Node: 20.x.x 
+        Package Manager: npm 10.x.x 
+    + PATH là danh sách các thư mục mà hệ thống của bạn tìm kiếm các lệnh như ng.
+
+4) Tạo ứng dụng Angular:
+- Tạo một dự án có tên my-angular-app:
+        ng new my-angular-app
+    + Thao tác này tạo ra các tệp và thư mục dự án, đồng thời cài đặt các thư viện phụ thuộc.
+(-) Quá trình có thể mất vài phút và sẽ yêu cầu vài thao tác:
+ -. Các lựa chọn được đề xuất khi được hỏi:
+    +) Định dạng bảng định kiểu: CSS (bạn có thể thay đổi sau)
+    +) Kết nối phía máy chủ (SSR): Hiện tại chưa hỗ trợ (có thể thêm sau ng add @angular/ssr).
+    +) Ứng dụng Zoneless: Hiện tại thì không (Bạn có hể thay đổi sau bằng 
+    ng add @angular/zoneless)
+    +) Các tùy chọn khác: Giữ nguyên cài đặt mặc định
+- Nếu không muốn cài đặt CLI trên toàn hệ thống, bạn có thể sử dụng lệnh npx:
+        npx @angular.cli@latest new my-angular-app
+
+5) Chạy ứng dụng Angular
+        cd my-angular-app
+        ng serve 
+    + cd: Vào thư mục dự án mới của bạn
+    + ng serve: Khởi động máy chủ phát triển cục bộ và theo dõi các thay đổi.
+- Quá trình xây dựng đầu tiên cso thể mất một phút.
+        ✔ Compiled successfully. ✔ Browser application bundle generation complete.
+- Có thể thêm --open cờ này để tự động mở ứng dụng trong trình duyệt mặc định của mình:
+        ng serve --open
+    (+) Theo mặc định, máy chủ phát triển chạy trên http://localhost:4200.
+=============================================================================================
+CHƯƠNG III: ỨNG DỤNG ANGULAR ĐẦU TIÊN 
+
+Bước 1: Mở src/ main.ts 
+ - Ứng dụng angular 20 khởi tạo một thành phần gốc độc lập.
+ - Bạn có thể định nghĩa nó trực tiếp trong main.ts 
+ - Mở tệp đó thay thế bằng đoạn mã: 
+    main.ts
+        import { bootstrapApplication } from '@angular/platform-browser';
+        import { Component } from '@angular/core';
+
+        @Component({
+            selector: 'app-root',
+            standalone: true,
+            template: `<h1>Hello, World!</h1>`
+        })
+        class App {}
+
+        bootstrapApplication(App);
+
+  + Tải lại trực tiếp: Khi ứng dụng angular đang chạy (được khởi chạy ng serve như trong 
+  chương trước), trình duyệt sẽ tự động tải lại khi lưu.
+    -) Giới thiệu nhanh: các thành phần
+     +) Thành phần (component) là một lớp điều khiển giao diện (mẫu của nó).
+     +) Mỗi thành phần đều có một bộ chọn (ví dụ: app-root) mà bạn đặt trong HTML.
+     +) Thành phần gốc được hiển thị bên trong index.html <app-root>.
+
+Bước 2: Phần tử chủ trong index.html
+- Angular sẽ hiển thị thành phần gốc tại vị trí mà bộ chọn của nó xuất hiện.
+- Mở ra src/index.html và đảm bảo thẻ gốc nằm bên trong <body></body>.
+- Thẻ phải khớp với bộ chọn thành phần của bạn từ Bước 1 (nó là app-root).
+- Nếu tạo dự án bằng giao diện dòng lệnh (CLI), thẻ này thường đã có sẵn:
+    index.html (minimal)
+    <!doctype html>
+    <html lang="en">
+        <head>
+            <meta charset="utf-8">
+            <title>My Angular App</title>
+            <base href="/">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+        </head>
+        <body>
+            <!-- Host element -->
+            <app-root></app-root>
+        </body>
+    </html>
+   + Giữ <base href="/" lại để <head> định tuyến hoạt động sau này.
+
+Bước 3: Liên kết một số dữ liệu
+- Thêm một thuộc tính hiển thị nó bằng phương pháp nội suy:
+    main.ts
+        import { bootstrapApplication } from '@angular/platform-browser';
+        import { Component } from '@angular/core';
+
+        @Component({
+            selector: 'app-root',
+            standalone: true,
+            template: `<h1>Hello, {{ name }}!</h1>`
+        })
+        class App { name = 'Angular 20'; }
+
+        bootstrapApplication(App);
+
+* Khuyên dùng: Hãy sử dụng ngôn từ đơn giản. Để tối ưu hiệu năng, hãy sử dụng thuộc tính thay 
+vì gọi trực tiếp các phương thức trong template.
+
+1) Cấu trúc dự án: 
+- Các tệp quan trọng trong không gian làm việc Angular tối thiểu:
+ + src/main.ts- Khởi chạy ứng dụng với bootstrapApplication.
+ + src/app/app.component.ts- Thành phần gốc (nếu sử dụng). Bạn cũng có thể định nghĩa thành 
+ phần gốc trực tiếp trong main.ts.
+ + src/app/- Nơi bạn thêm các thành phần và tính năng của mình.
+ + src/index.html- Trang chủ chứa <app-root>.
+ + src/styles.css- Phong cách toàn cầu cho ứng dụng.
+ + angular.json- Cấu hình không gian làm việc Angular (xây dựng, chạy, kiểm thử).
+ + package.json- Tập lệnh và các thành phần phụ thuộc.
+===========================================================================================
+ANGULAR TEMPLATE
+- Các mẫu (template) là mã HTML mà một thành phần (component) hiển thị.
+- Các mẫu kết hợp HTML thuần túy với cú pháp Angular Template để hiển thị dữ liệu và phản hồi
+các sự kiện của người dùng 
+
+1) Các components, template và selector
+- Component (thành phần) là một lớp điều khiển giao diện người dùng (template của nó)
+- Mỗi conponent đều có một selector (ví dụ: app-root) mà bạn đặt trong HTML.
+- Component gốc được hiển thị bên trong index.html là <app-root>
+
+2) Cách thức hoạt động của các template
+- Quá trình hiển thị ban đầu: Angular tạo ra các thành phần và xử lý mẫu, thiết lập liên kết
+giữa cá DOM và các trường của thành phần.
+- Phát hiện thay đổi: Khi có sự kiện người dùng, bộ hẹn giờ hoặc tác vụ bất đồng bộ, Angular
+sẽ đánh giá lại các biểu thức trong mẫu và chỉ cập nhật những gì đã thay đổi.
+- Chỉ thị: Tạo/hủy các khung nhìn nhúng (các đoạn DOM) dựa trên trạng thái.
+- Luông liên kết: Liên kết nội suy/thuộc tính đẩy dữ liệu đến giao diện người dùng. Liên kết 
+sự kiện thu nhận các sự kiện của trình duyệt và gửi trở lại thành phần.
+
+(-) Lưu ý: Nội suy sẽ thoát khỏi mã HTML. Sử dụng liên kết thuộc tính/thuộc tính động để ?. 
+tránh lỗi giá trị null 
+3) Các yếu tố cần thiết của mẫu:
+* Khái niệm chính:
+ + Template là mã HTML mà Angular dùng để hiển thị cho một component.
+ + Các liên kết: nội suy {{ ... }}, thuộc tính [prop] và sự kiện (event).
+ + Tham chiếu mẫu: các tên cục bộ dùng #box để tham chiếu đến các phần tử hoặc chỉ thị.
+ + Các chỉ thị cấu trúc (*ngIf, *ngFor) thay đổi cục bộ DOM.
+        <p>Hello {{ name }}</p>
+        <img [src]="url" (error)="onMissing()">
+        <input #box (input)="save(box.value)">
+        <li *ngFor="let item of items; index as i">{{ i }}. {{ item }}</li>
+    Mã được giải thích:
+     + {{ name }} Nội suy cho văn bản.
+     + [src]: Liên kết thuộc tính để thiết lập thuộc tính của một phần tử.
+     + (error): Liên kết sự kiện để phản ứng với sự kiện lỗi hình ảnh.
+     + #box: Biến tham chiếu; box.value đọc giá trị đầu vào hiện tại.
+     + *ngFor ... index as i: Chỉ thị cấu trúc để lặp với chỉ số bắt đầu từ 0.
+
+4) Tổng quan về các template   
+- Hãy cùng khám phá các mẫu thiết kế từng bước một trong những chương tiếp theo: 
+ + Interpolation - hiển thị các giá trị bằng dấu {{ ... }}.
+ + Template Reference Variables -  dùng #vả để tham chiếu các phần tử
+ + Null-Safe Navigation (?.) - đọc các giá trị tùy chọn một cách an toàn.
+ + Structural Directives: Micro-syntax - cách viết tắt *
+ + ngTemplateOutlet - hiển thị mẫu bằng tham chiếu.
+ + Template Statements and $event - xử lý các sự kiện và dữ liệu đầu vào.
+ + Alias with as in *ngif - Tạo bí danh cục bộ
+ + Pipes in Template(|) - định dạng và chuyển đổi giá trị.
+ + Attribute Binding with attr. - liên kết với các thuộc tính HTML.
+ + TrackBy with *ngFor - giúp danh sách luôn nhanh và ổn định.
+=============================================================================================
+ANGULAR TEMPLATE: INTERPOLATION 
+- Hiển thị giá trị thành phần bằng dấu chấm {{ ... }}
+
+1) Interpolation là gì?
+- Hiển thị giá trị của các thành phần trong DOM bằng dấu ngoặc nhọn kép.
+- Hãy hiểu nó như sau: "Lấy giá trị này và in ra dưới dạng văn bản".
+- Chỉ một chiều: dữ liệu -> chế độ xem.
+
+2) Khi nào nên sử dụng phương pháp Interpolation?
+- Hiển thị các giá trị văn bản và các biểu thức đơn giản, nhanh chóng (không có tương tác phụ).
+- Sử dụng liên kết thuộc tính/thuộc tính cho các thuộc tính động.
+- Đối với nội dung HTML, cần cân nhắc [interHTML] kỹ lưỡng.
+    Ví dụ: 
+        import { bootstrapApplication } from '@angular/platform-browser';
+        import { Component } from '@angular/core';
+        import { CommonModule } from '@angular/common';
+
+            @Component({
+                selector: 'app-root',
+                standalone: true,
+                imports: [CommonModule],
+                styles: [`
+                    .toolbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+                    input { padding: 6px 8px; }
+                `],
+                template: `
+                    <h3>Template Reference Variables (#var)</h3>
+                    <div class="toolbar">
+                    <input #box type="text" placeholder="Type something" (input)="current = box.value" />
+                    <button (click)="read(box.value)">Read value</button>
+                    <button (click)="box.focus()">Focus input</button>
+                    <span style="margin-left:8px;color:#666">length={{ box.value?.length || 0 }}</span>
+                    </div>
+                    <p>Current: {{ current || '(empty)' }}</p>
+                `
+            })
+            export class App {
+                current = '';
+                read(val: string) { this.current = val ?? ''; }
+            }
+
+            bootstrapApplication(App);
+    Ví dụ được giải thích: 
+     + #box: Một tham chiếu mẫu được liên kết với thể hiện của phần tử đầu vào.
+     + Read a value: box.value đọc văn bản hiện tại của ô nhập liệu
+     + Update state: (input)="current = box.value" Sao chép văn bản nhập hiện tại vào 
+     trường current của thành phần.
+     + Scope: Biến chỉ tồn tại trong mẫu nơi nó được khai báo.
+=============================================================================================
+Null-Safe Navigation (?.)
+- Đọc các giá trị tùy chọn một cách an toàn ?. và cung cấp các giá trị mặc định bằng 
+cách sử dụng ??
+
+1) Null-Safe Navigation (?.) là gì?
+- ?. đọc các giá trị có thể bị thiếu mà không gây ra lỗi 
+

@@ -1,0 +1,163 @@
+=========================================================================================
+|											|
+|					DAY 1						|
+|											|
+=========================================================================================
+=========================================================================================
+|				  ANGULAR LÀ GÌ? 					|
+=========================================================================================
+1) Angular là gì?
+- Angular là một framework frontend dùng để xây dựng web application
+ + Được xây dựng bằng TypeScript
+ + Chạy ở trình duyệt
+- Angular không phỉa HTML, CSS mà nó là javascript (TypeScrip) điểu khiển giao diện.
+2) Angular giải quyết vấn đề gì?
+- Angular không phải là dạng reload trang mà chạy một loạt mỗi lần click thì sẽ chuyển sang giao diện đó luôn chứ không phải reload từng trang một.
+- Angular hoạt động: 
+ B1: Load lần đầu 
+	Trình duyệt (browser) -> Server -> index.html
+  => Đây là lần duy nhất load HTMl
+ B2: Angular chạy: 
+	+ JavaScript load
+	+ Angular khởi động
+	+ Render giao diện
+ B3: User tương tác: 
+	Click -> Angular chạy xử lý -> Update UI
+	=> không reload lại 
+3) SPA là gì?
+- SPA (Single page application) là chỉ có một trang HTML và nội dung thay đổi bằng JS
+4) JS thuần và Angular:
+- JS thuần thì tự xử lý DOM, code dễ rối và khó scale
+- Angular thì angular sẽ xử lý có structure và dễ scale
+
+5) Angular gồm những gì? 
+- Angular có các thành phần chính:
+ + Component là UI
+ + Module là quản lý
+ + Service là logic
+ + Binding là kết nối dữ liệu
+6) Vai trò của Angular & Server
+- Angular (Frontend) 
+	+ Hiển thị UI
+	+ Xử lý click
+	+ Gọi API
+- Server (Backend)
+	+ Trả về dữ liệu (JSON)
+=========================================================================================
+|			CÀI ĐẶT CẤU HÌNH + CẤU TRÚC DỰ ÁN				|
+=========================================================================================
+1) Angular CLI là gì?
+- Angular CLI là công cụ giúp tạo và quản lý project Angular
+ + Tạo project
+ + Tạo component
+ + Chạy server
+2) Tạo project 
+ C1: ng new my-app
+ C2: npx -p @angular/cli@17 ng new my-app
+- Khi tạo sẽ hỏi: 
+ + CSS hay SCSS -> CSS
+ + Có routing không -> Yes
+3) Chạy project
+ cd my-app
+ ng serve
+-> Mở: http://localhost:4200
+4) Cấu trúc project
+* index.html
+- là file HTML duy nhất
+ + Cấu trúc: 
+	<body>
+	  <app-root></app-root>
+	</body>
+-> Angular sẽ inject vào đây
+* main.ts
+- Điểm bắt đầu app, có nhiệm vụ khởi động Angular
+* app.component.ts: là Component gốc
+* app.component.html: là giao diện chính
+* app.module.ts: là nơi cấu hình app
+=> Luồng chạy cần nhớ:
+ index.html -> main.ts -> AppModule -> AppComponent -> Hiển thị UI
+=========================================================================================
+|					COMPONENT					|
+=========================================================================================
+1) Component là gì? 
+- Component là 1 phần giao diện
+- Ví dụ như header, sidebar, match item -> mỗi cái là một component
+<=> Angular app là tập hợp nhiều component
+<=> Component được dùng trong HTML
+2) Component gồm những gì?
+- Một component có 3 phần: 
+ * HTML (Template): Giao diện
+	<h1>Hello</h1>
+ * TypeScript (logic): Xử lý dữ liệu
+	title = "Hello";
+ * CSS (style): Giao diện đẹp
+<=> Component là gồm có HTML + TS + CSS
+3) Cấu trúc component
+	@Component ({
+	   selector: 'app-header',
+	   templateUrl: './header.component.html',
+	   styleUrl: ['./header.component.html']
+	});
+4) Selector là gì?
+- Selector chính là tên thẻ HTML
+  + Ví dụ: 
+	selector: 'app-header'
+     -> Dùng trong HTML: 
+	<app-header></app-header>
+<=> selector là cách gọi component
+5) Component hoạt động như thế nào?
+- Luồng hoạt động:
+	Component TS -> truyền data -> HTML hiển thị
+  + Ví dụ: 
+	</> TypeScript:
+	title = "Football";
+	</> HTML:
+	<h1>{{ title }}</h1>
+	=> Hiển thị: Football
+
+=========================================================================================
+|					DATA BINDING					|
+=========================================================================================
+1) Data Binding là gì?
+- Là cách kết nối dữ liệu giữa TS và HTML
+ (+) Hiểu nôm na là TypeScript nói gì thì HTML sẽ hiển thị ra cái đó
+2) Có 4 loại binding
+2.1) Interpolation ({{}})
+- Dùng để hiển thị dữ liệu truyền từ TS về HTML
+ VD: 
+    TS: 
+	name = "Messi";
+    HTML: 
+	<h1>{{name}}</h1>
+	-> Kết quả hiển thị sẽ là Messi
+2.2) Property binding ([])
+- Gán giá trị cho thuộc tính HTML
+ TS: image = "abc.jpg"
+ HTML: <img [src]="image">
+ (*) Nếu không dùng [] trong [src] sẽ sai
+2.3) Event binding()
+- Bắt sự kiện (click, input,...)
+  TS: 
+	ClickMe(){
+	   console.log("Clicked");
+	}
+  HTML: 
+	<button (click)= "clickMe()">click</button>
+-> Khi click thì TS chạy => chiều chạy sẽ từ HTML truyền về TS
+2.4) Two-way Binding[()]
+- Dùng để chạy hiển thị dữ liệu 2 chiều (input <-> TS)
+ TS: name ="";
+ HTML: <input [(ngModel)]="name">
+ -> Khi nhập thì TS đổi dữ liệu, HTML cũng thay đổi hiển thị dữ liệu nhập vào
+=========================================================================================
+|					DIRECTIVE					|
+=========================================================================================
+1) Directive là gì? 
+- Directive là công cụ giúp thay đổi HTML, là cách giúp angular can thiệp vào HTML
+- Nó có thể: 
+	+ Thêm/xóa element
+	+ Lặp elenmen
+	+ Thay đổi class/style
+2) Structural directive (có dấu *)
+- Thay đổi cấu trúc DOM (HTML thật)
+2.1) *ngIf (Ẩn/hiện - nhưng sâu hơn)
